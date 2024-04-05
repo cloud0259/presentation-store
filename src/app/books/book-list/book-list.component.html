@@ -1,0 +1,24 @@
+<div class="mt-2 mx-2">
+    <div style="display: flex; justify-content: space-between;">
+        <h1>Books</h1>
+        <button class="btn btn-primary" style="height: max-content; margin: auto 0;" (click)="addBook()">Nouveau livre</button>
+    </div>
+    <app-book-count [bookCount]="bookStore.bookLength()"></app-book-count>
+    <ul style="display: flex; gap: 20px; flex-wrap: wrap;">
+        <!-- @for(book of bookStore.books(); track $index){ -->
+        @for(book of bookStore.books(); track $index){
+        <li class="list-unstyled">
+            <div class="card" style="width: 250px; ">
+                <div class="card-header">
+                    <h2>{{book.title}}</h2>
+                </div>
+                <div class="card-body">
+                    <p>{{book.author}}</p>
+                    <p>{{book.description}}</p>
+                    <button class="btn btn-primary" (click)="deleteBook(book.id)">Supprimer</button>
+                </div>
+            </div>
+        </li>
+        }
+    </ul>
+</div>
